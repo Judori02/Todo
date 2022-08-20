@@ -11,6 +11,10 @@ namespace Todo.Web.Data.Contexts
         public DbSet<ToDoItem> ToDoItems { get; set; } = null!;
         public DbSet<Tag> Tags { get; set; } = null!;
 
+        public ApplicationDbContext()
+        {
+            Database.EnsureCreated();
+        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
