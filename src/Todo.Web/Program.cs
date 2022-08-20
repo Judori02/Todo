@@ -1,9 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using Todo.Web.Data;
 using Todo.Web.Data.Base;
 using Todo.Web.Data.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console());
 
 var config = builder.Configuration;
 
@@ -30,6 +34,7 @@ using (var serviceScope = app.Services.CreateScope())
     }
     catch (Exception exception)
     {
+        Log.Error($"Инициализация базы данных завершилась с ошибкой: {exception}");
     }
 }
 
