@@ -10,8 +10,8 @@ namespace Todo.Web.Data.Configurations
         {
             builder.HasKey(e => e.Id);
             builder.HasIndex(e => e.Id).IsUnique();
-            builder.Property(e => e.Name).HasMaxLength(80).IsRequired();
-            builder.Property(e => e.Surname).HasMaxLength(80).IsRequired();
+            builder.Property(e => e.Name).HasMaxLength(80).IsRequired(false);
+            builder.Property(e => e.Surname).HasMaxLength(80).IsRequired(false);
             builder.Property(e => e.Email).HasMaxLength(100).IsRequired();
             builder.HasIndex(e => e.Email).IsUnique();
         }
