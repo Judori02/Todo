@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Todo.Web.Data.Base;
+using Todo.Web.Data.Configurations;
 using Todo.Web.Data.Entities;
 
 namespace Todo.Web.Data.Contexts
@@ -13,6 +14,15 @@ namespace Todo.Web.Data.Contexts
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new ToDoItemConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new TagConfiguration());
+
+            base.OnModelCreating(builder);
         }
 
         public int SaveChanges()
