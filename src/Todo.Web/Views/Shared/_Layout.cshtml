@@ -27,6 +27,11 @@
                         </li>
                     </ul>
                 </div>
+                <div class="btn-login">
+                    <a asp-action="Login" asp-area="Account" asp-controller="Auth" 
+                    asp-route-returnURL="@($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}")">Войти
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
