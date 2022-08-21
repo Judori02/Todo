@@ -24,6 +24,7 @@ namespace Todo.Web.Data.Contexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Entity<User>(entity => entity.Property(e => e.Email).IsRequired(false));
             builder.Entity<User>(entity => entity.ToTable(name: "Users"));
             builder.Entity<IdentityRole>(entity => entity.ToTable(name: "Roles"));
@@ -41,8 +42,6 @@ namespace Todo.Web.Data.Contexts
             builder.ApplyConfiguration(new ToDoItemConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new TagConfiguration());
-
-            base.OnModelCreating(builder);
         }
 
         public int SaveChanges()
