@@ -1,7 +1,14 @@
-﻿namespace Todo.Web.Data.Base
+﻿using Microsoft.EntityFrameworkCore;
+using Todo.Web.Data.Entities;
+
+namespace Todo.Web.Data.Base
 {
     public interface IBaseDbContext
     {
+        DbSet<User> Users { get; set; }
+        DbSet<ToDoItem> ToDoItems { get; set; }
+        DbSet<Tag> Tags { get; set; }
+
         /// <summary>
         /// Сохраняет все изменения, сделанные в этом контексте, в базу данных.
         /// </summary>

@@ -9,6 +9,7 @@ namespace Todo.Web.Data.Contexts
 {
     public class ApplicationDbContext : IdentityDbContext<User>, IBaseDbContext
     {
+        public DbSet<User> Users { get; set; } = null!;
         public DbSet<ToDoItem> ToDoItems { get; set; } = null!;
         public DbSet<Tag> Tags { get; set; } = null!;
 
