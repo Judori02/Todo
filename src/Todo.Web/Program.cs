@@ -26,6 +26,8 @@ builder.Services.AddScoped<IBaseDbContext>(provider => provider.GetService<Appli
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddAutoMapper(typeof(AppMappingProfile));
+
 var app = builder.Build();
 
 using (var serviceScope = app.Services.CreateScope())
